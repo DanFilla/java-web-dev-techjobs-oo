@@ -11,13 +11,58 @@ public class Job {
     private PositionType positionType;
     private CoreCompetency coreCompetency;
 
-    // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
-    //  other five fields. The second constructor should also call the first in order to initialize
-    //  the 'id' field.
+    // TODO: Add two constructors - one to initialize a unique ID and a second
+	// to initialize the other five fields. The second constructor should also
+	// call the first in order to initialize the 'id' field.
+	public Job() {
+		this.is = nextId();
+		nextId++;
+	}
 
-    // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
-    //  match.
+	public Job(String aName, Employer aEmployer, Location aLocation,
+			PositionType aPositionType, CoreCompetency aCoreCompetency) {
+		this.name = aName;
+		this.employer = aEmployer;
+		this.location = aLocation;
+		this.positionType = aPositionType;
+		this.coreCompetency = aCoreCompetency;
+		this();
+	}
 
-    // TODO: Add getters for each field EXCEPT nextId. Add setters for each field EXCEPT nextID
-    //  and id.
+    // TODO: Add custom equals and hashCode methods. Consider two Job objects
+	// "equal" when their id fields match.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Job)) return false;
+        Job that = (Job) o;
+        return id == that.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
+    }
+
+    // TODO: Add getters for each field EXCEPT nextId. Add setters for each
+	// field EXCEPT nextID and id.
+	public String getName() {
+		return this.name;
+	}
+
+	public String getEmployer() {
+		return this.employer;
+	}
+
+	public String getLocation() {
+		return this.location;
+	}
+
+	public String getPositionType() {
+		return this.postitionType;
+	}
+	
+	public String getCoreCompetency() {
+		return this.coreCompetency;
+	}
 }
