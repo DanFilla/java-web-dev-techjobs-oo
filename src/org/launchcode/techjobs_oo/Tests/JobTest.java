@@ -36,7 +36,7 @@ public class JobTest {
 	@Test
 	public void stuff() {
 		System.out.println(test_job.getId());
-		System.out.println(test_job.getLocation().getId());
+		System.out.println(test_job.getCoreCompetency().getId());
 	}
 
 
@@ -49,6 +49,8 @@ public class JobTest {
 					 "Position Type: Quality control\n" +
 					 "Core Competency: Persistence\n",
 					 test_job.toString());
+
+		assertEquals("Data not available.", test_job_empty.getLocation());
 	}
 
     @Test
@@ -79,6 +81,8 @@ public class JobTest {
 	@Test
 	public void testJobsForEquality() {
 		assertFalse(test_job.getId() == test_job_dup.getId());
+		assertTrue(test_job.equals(test_job));
+		//assertFalse(test_job.equals(test_job_dup));
 	}
 
 }
