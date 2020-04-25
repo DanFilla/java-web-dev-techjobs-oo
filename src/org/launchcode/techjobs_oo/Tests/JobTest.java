@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
 public class JobTest {
 
 	Job test_job;
+	Job test_job_empty;
 	Job test_job_dup;
 	Job test_job2;
 
@@ -19,6 +20,10 @@ public class JobTest {
 				   new Location("Desert"), new PositionType("Quality control"),
 				   new CoreCompetency("Persistence"));
 
+		test_job_empty = new Job("", new Employer(""),
+				   new Location(""), new PositionType(""),
+				   new CoreCompetency(""));
+
 		test_job_dup = new Job("Product tester", new Employer("ACME"),
 				   new Location("Desert"), new PositionType("Quality control"),
 				   new CoreCompetency("Persistence"));
@@ -27,6 +32,24 @@ public class JobTest {
 				   new Location("New York"), new PositionType("Manager"),
 				   new CoreCompetency("Typing"));
     }
+
+	@Test
+	public void stuff() {
+		System.out.println(test_job.getId());
+		System.out.println(test_job.getLocation().getId());
+	}
+
+
+	@Test
+	public void testToString() {
+		assertEquals("\nID: 4\n" +
+					 "Name: Product tester\n" +
+					 "Employer: ACME\n" +
+					 "Location: Desert\n" +
+					 "Position Type: Quality control\n" +
+					 "Core Competency: Persistence\n",
+					 test_job.toString());
+	}
 
     @Test
     public void testingSettingJobId() {
@@ -57,4 +80,5 @@ public class JobTest {
 	public void testJobsForEquality() {
 		assertFalse(test_job.getId() == test_job_dup.getId());
 	}
+
 }

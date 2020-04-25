@@ -18,11 +18,11 @@ public class CoreCompetency {
     }
 
     // Custom toString, equals, and hashCode methods:
-
-    @Override
-    public String toString() {
-        return value;
-    }
+	@Override
+	public String toString() {
+		if (this.value.length() > 0) {return this.value;}
+		return "Data not available.";
+	}
 
     @Override
     public boolean equals(Object o) {

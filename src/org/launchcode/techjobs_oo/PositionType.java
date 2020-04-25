@@ -8,7 +8,7 @@ public class PositionType {
     private String value;
 
     public PositionType() {
-        id = nextId;
+        this.id = nextId;
         nextId++;
     }
 
@@ -20,7 +20,8 @@ public class PositionType {
     // TODO: Add a custom toString() method that returns the data stored in 'value'.
 	@Override
 	public String toString() {
-		return this.value;
+		if (this.value.length() > 0) {return this.value;}
+		return "Data not available.";
 	}
 
     // TODO: Add custom equals and hashCode methods. Consider two PositionType
@@ -43,7 +44,7 @@ public class PositionType {
     // Getters and Setters:
 
     public int getId() {
-        return id;
+        return this.id;
     }
 
     public String getValue() {
