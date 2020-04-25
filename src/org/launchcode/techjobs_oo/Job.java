@@ -1,5 +1,7 @@
 package org.launchcode.techjobs_oo;
 
+import java.util.Objects;
+
 public class Job {
 
     private int id;
@@ -15,18 +17,18 @@ public class Job {
 	// to initialize the other five fields. The second constructor should also
 	// call the first in order to initialize the 'id' field.
 	public Job() {
-		this.is = nextId();
+		this.id = nextId;
 		nextId++;
 	}
 
 	public Job(String aName, Employer aEmployer, Location aLocation,
 			PositionType aPositionType, CoreCompetency aCoreCompetency) {
+		this();
 		this.name = aName;
 		this.employer = aEmployer;
 		this.location = aLocation;
 		this.positionType = aPositionType;
 		this.coreCompetency = aCoreCompetency;
-		this();
 	}
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects
@@ -50,19 +52,43 @@ public class Job {
 		return this.name;
 	}
 
-	public String getEmployer() {
+	public Employer getEmployer() {
 		return this.employer;
 	}
 
-	public String getLocation() {
+	public Location getLocation() {
 		return this.location;
 	}
 
-	public String getPositionType() {
-		return this.postitionType;
+	public PositionType getPositionType() {
+		return this.positionType;
 	}
 	
-	public String getCoreCompetency() {
+	public CoreCompetency getCoreCompetency() {
 		return this.coreCompetency;
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public void setName(String aname) {
+		this.name = aname;
+	}
+
+	public void setEmployer(Employer aemployer) {
+		this.employer = aemployer;
+	}
+
+	public void setLocation(Location alocation) {
+		this.location = alocation;
+	}
+
+	public void setPositionType(PositionType apositionType) {
+		this.positionType = apositionType;
+	}
+
+	public void setCoreCompetency(CoreCompetency acoreCompetency) {
+		this.coreCompetency = acoreCompetency;
 	}
 }
