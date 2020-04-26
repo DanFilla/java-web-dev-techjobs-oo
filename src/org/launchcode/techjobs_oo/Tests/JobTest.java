@@ -3,9 +3,7 @@ package org.launchcode.techjobs_oo.Tests;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class JobTest {
 
@@ -13,6 +11,9 @@ public class JobTest {
 	Job test_job_empty;
 	Job test_job_dup;
 	Job test_job2;
+
+	Job test_job_alpha;
+	Job test_job_beta;
 
     @org.junit.Before
     public void setUp() throws Exception {
@@ -34,15 +35,8 @@ public class JobTest {
     }
 
 	@Test
-	public void stuff() {
-		System.out.println(test_job.getId());
-		System.out.println(test_job.getCoreCompetency().getId());
-	}
-
-
-	@Test
 	public void testToString() {
-		assertEquals("\nID: 4\n" +
+		assertEquals("\nID: 5\n" +
 					 "Name: Product tester\n" +
 					 "Employer: ACME\n" +
 					 "Location: Desert\n" +
@@ -50,12 +44,17 @@ public class JobTest {
 					 "Core Competency: Persistence\n",
 					 test_job.toString());
 
-		assertEquals("Data not available.", test_job_empty.getLocation());
+		assertEquals("Data not available.", test_job_empty.getLocation().toString());
 	}
 
-    @Test
+	@Test
     public void testingSettingJobId() {
+		test_job_alpha = new Job();
+
+		test_job_beta = new Job();
+
 		assertFalse(test_job.getId() == test_job2.getId());
+		assertEquals(-1, test_job_alpha.getId() - test_job_beta.getId(), .001);
     }
 
 	@Test
@@ -80,9 +79,9 @@ public class JobTest {
 
 	@Test
 	public void testJobsForEquality() {
-		assertFalse(test_job.getId() == test_job_dup.getId());
+		assertNotEquals(test_job.getId(), test_job_dup.getId());
 		assertTrue(test_job.equals(test_job));
-		//assertFalse(test_job.equals(test_job_dup));
+		assertFalse(test_job.equals(test_job_dup));
 	}
 
 }
